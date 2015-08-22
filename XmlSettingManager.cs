@@ -6,6 +6,9 @@ using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+#if WINDOWS_APP
+using Windows.Storage;
+#endif
 
 namespace Boredbone.Utility
 {
@@ -201,45 +204,7 @@ namespace Boredbone.Utility
 #else
             return this.LoadBackupMain(options, errorMessage);
 #endif
-
-            //try
-            //{
-            //    //バックアップファイルを読み込む
-            //    var loaded = this.LoadMain(backUpNameHeader + fileName);
-
-            //    return new LoadedObjectContainer<T>(loaded, errorMessage);
-            //}
-            //catch (FileNotFoundException)
-            //{
-            //    //バックアップファイルも存在しなかった場合
-
-            //    if (options.HasFlag(XmlLoadingOptions.IgnoreAllException)
-            //       || options.HasFlag(XmlLoadingOptions.IgnoreNotFound))
-            //    {
-            //        //例外を無視する設定の場合はnewして返す
-            //        return new LoadedObjectContainer<T>
-            //            ((options.HasFlag(XmlLoadingOptions.ReturnNull) ? null : new T()), errorMessage);
-            //    }
-            //    else
-            //    {
-            //        //例外を投げる
-            //        throw;
-            //    }
-            //}
-            //catch
-            //{
-            //    //その他の例外
-
-            //    if (options.HasFlag(XmlLoadingOptions.IgnoreAllException))
-            //    {
-            //        return new LoadedObjectContainer<T>
-            //            ((options.HasFlag(XmlLoadingOptions.ReturnNull) ? null : new T()), errorMessage);
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
+            
         }
 
         /// <summary>
@@ -256,46 +221,13 @@ namespace Boredbone.Utility
         public LoadedObjectContainer<T> LoadBackupXml(XmlLoadingOptions options)
         {
             return this.LoadBackupMain(options, null);
-
-            //try
-            //{
-                
-            //    var loaded = this.LoadMain(backUpNameHeader + this.fileName);
-
-            //    return new LoadedObjectContainer<T>(loaded, null);
-            //}
-            //catch (FileNotFoundException)
-            //{
-            //    if (options.HasFlag(XmlLoadingOptions.IgnoreAllException)
-            //       || options.HasFlag(XmlLoadingOptions.IgnoreNotFound))
-            //    {
-            //        return new LoadedObjectContainer<T>
-            //            ((options.HasFlag(XmlLoadingOptions.ReturnNull) ? null : new T()), null);
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
-            //catch (Exception e)
-            //{
-            //    if (options.HasFlag(XmlLoadingOptions.IgnoreAllException))
-            //    {
-            //        return new LoadedObjectContainer<T>
-            //            ((options.HasFlag(XmlLoadingOptions.ReturnNull) ? null : new T()), e);
-            //    }
-            //    else
-            //    {
-            //        throw;
-            //    }
-            //}
+        
         }
 #endif
 
 
 #if WINDOWS_APP
         public async Task<LoadedObjectContainer<T>> LoadBackupMainAsync(XmlLoadingOptions options, Exception errorMessage)
-        {
 #else
         private LoadedObjectContainer<T> LoadBackupMain(XmlLoadingOptions options, Exception errorMessage)
 #endif
