@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultiMonitorTools", "MultiMonitorTools\MultiMonitorTools.csproj", "{D7F89A87-6027-4E86-9781-2C4BC06E3F40}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Utility", "Utility\Utility.shproj", "{42AB21E2-202C-4001-9578-5E8D166B9B6C}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Utility\Utility.projitems*{d7f89a87-6027-4e86-9781-2c4bc06e3f40}*SharedItemsImports = 4
+		Utility\Utility.projitems*{42ab21e2-202c-4001-9578-5e8d166b9b6c}*SharedItemsImports = 13
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7F89A87-6027-4E86-9781-2C4BC06E3F40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7F89A87-6027-4E86-9781-2C4BC06E3F40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7F89A87-6027-4E86-9781-2C4BC06E3F40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7F89A87-6027-4E86-9781-2C4BC06E3F40}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

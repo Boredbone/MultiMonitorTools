@@ -1,0 +1,64 @@
+﻿<Window x:Class="MultiMonitorTools.Views.EnumerateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MultiMonitorTools.Views"
+        xmlns:viewmodel="clr-namespace:MultiMonitorTools.ViewModels"
+        mc:Ignorable="d"
+        Title="Relocate Window" Height="500" Width="600" ShowInTaskbar="False" Icon="/MultiMonitorTools;component/icon.ico">
+    <Window.DataContext>
+        <viewmodel:EnumerateWindowViewModel/>
+    </Window.DataContext>
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Margin" Value="4"/>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <!--<ListView Grid.Row="0" ItemsSource="{Binding Windows}"/>-->
+        <ListBox x:Name="listBox1"
+                 Margin="12"
+                 Grid.Row="0"
+                 ScrollViewer.CanContentScroll="False"
+                 ItemsSource="{Binding Windows}" 
+                 SelectedItem="{Binding SelectedWindow}" 
+                 HorizontalContentAlignment="Stretch">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ContentControl Content="{Binding Title}" MouseDoubleClick="ContentControl_MouseDoubleClick" FontSize="21.333">
+                       <!-- <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <ei:CallMethodAction 
+                                    TargetObject="{Binding Mode=OneWay, RelativeSource={RelativeSource AncestorType={x:Type ListBox}},
+                        Path=DataContext}" 
+                                    MethodName="Execute"/>
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>-->
+                    </ContentControl>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Grid Grid.Row="1" Margin="0,0,0,12" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Button Grid.Column="0" Content="&#xE17C;" FontFamily="Segoe UI Symbol"
+                    FontSize="25" ToolTip="Relocate" Click="Button_Click"/>
+            <Button Grid.Column="1" Content="&#xE117;" FontFamily="Segoe UI Symbol"
+                    FontSize="25" ToolTip="Refresh" Command="{Binding RefreshCommand}"/>
+            <Button Grid.Column="2" Content="&#xE10A;" FontFamily="Segoe UI Symbol"
+                    FontSize="25" ToolTip="Cancel" Click="Button_Click_1"/>
+            
+        </Grid>
+    </Grid>
+</Window>
