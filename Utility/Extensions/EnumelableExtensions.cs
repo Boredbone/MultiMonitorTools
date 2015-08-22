@@ -174,20 +174,17 @@ namespace Boredbone.Utility.Extensions
             }
         }
 
-        ///// <summary>
-        ///// シーケンスを指定されたサイズのチャンクに分割します.
-        ///// </summary>
-        //public static IEnumerable<IEnumerable<T>> Chunk<T>(this IEnumerable<T> self, int chunkSize)
+        //public static IEnumerable<IEnumerable<T>> Buffer<T>(this IEnumerable<T> source, int size)
         //{
-        //    if (chunkSize <= 0)
+        //    if (size <= 0)
         //    {
-        //        throw new ArgumentException("Chunk size must be greater than 0.", "chunkSize");
+        //        throw new ArgumentException("Chunk size must be greater than 0.", nameof(size));
         //    }
 
-        //    while (self.Any())
+        //    while (source.Any())
         //    {
-        //        yield return self.Take(chunkSize);
-        //        self = self.Skip(chunkSize);
+        //        yield return source.Take(size);
+        //        source = source.Skip(size);
         //    }
         //}
 

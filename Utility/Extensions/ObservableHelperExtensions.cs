@@ -9,9 +9,17 @@ namespace Boredbone.Utility.Extensions
     public static class ObservableHelperExtensions
     {
 
-       
 
-        public static T AddTo<T,TKey>
+        /// <summary>
+        /// 辞書にIDisposableを追加し、同じキーが存在している場合は元のアイテムをDispose
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="disposable"></param>
+        /// <param name="dictionary"></param>
+        /// <param name="key"></param>
+        /// <returns></returns>
+        public static T AddTo<T, TKey>
             (this T disposable, IDictionary<TKey, IDisposable> dictionary, TKey key) where T : IDisposable
         {
             IDisposable result;
@@ -30,6 +38,13 @@ namespace Boredbone.Utility.Extensions
             return disposable;
         }
 
+        /// <summary>
+        /// 一定時間ごとに一つだけ通過
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source"></param>
+        /// <param name="interval"></param>
+        /// <returns></returns>
         public static IObservable<T> DownSample<T>(this IObservable<T> source, TimeSpan interval)
         {
             return Observable.Create<T>(o =>
@@ -57,6 +72,6 @@ namespace Boredbone.Utility.Extensions
             //
             //return sub.AsObservable();
         }
-        
+
     }
 }

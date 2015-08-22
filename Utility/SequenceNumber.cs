@@ -7,6 +7,9 @@ using System.Text.RegularExpressions;
 
 namespace Boredbone.Utility
 {
+    /// <summary>
+    /// 文字列を連番で並べ替えるためのオブジェクト
+    /// </summary>
     public struct SequenceNumber : IComparable
     {
         private string preName;
