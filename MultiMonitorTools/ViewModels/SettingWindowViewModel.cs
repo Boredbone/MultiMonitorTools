@@ -98,7 +98,9 @@ namespace MultiMonitorTools.ViewModels
         }
     }
 
-
+    /// <summary>
+    /// 各壁紙画像の設定
+    /// </summary>
     class WallpaperItemViewModel : ViewModelBase
     {
 
@@ -122,6 +124,8 @@ namespace MultiMonitorTools.ViewModels
             this.FileSelectCommand = new ReactiveCommand().AddTo(this.unsubscribers);
             this.FileSelectCommand.Subscribe(x =>
             {
+                //ファイルを選択しパスを取得
+
                 OpenFileDialog openFileDialog = new OpenFileDialog();
                 openFileDialog.FilterIndex = 1;
                 openFileDialog.Filter
@@ -135,6 +139,8 @@ namespace MultiMonitorTools.ViewModels
 
             if (_positionsList == null)
             {
+                //壁紙表示方法の一覧をenumから生成
+
                 _positionsList = Enum.GetValues(typeof(DesktopWallpaperPosition))
                     .AsEnumerable<DesktopWallpaperPosition>()
                     .Select(x => new WallpaperPositionItem(x.ToString(), x))
@@ -149,6 +155,9 @@ namespace MultiMonitorTools.ViewModels
         }
     }
 
+    /// <summary>
+    /// 壁紙表示方法とその表示名を関連付ける
+    /// </summary>
     class WallpaperPositionItem
     {
         public string Name { get; }

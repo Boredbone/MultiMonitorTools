@@ -18,23 +18,6 @@ namespace MultiMonitorTools.Settings
         [DataMember]
         public ObservableCollection<ObservableCollection<WallpaperSettings>> Settings { get; private set; }
 
-        //private int _fieldTargetMonitor;
-        ///// <summary>
-        ///// Windowsのモニタ番号-1,背景をセットするモニタ
-        ///// </summary>
-        //[DataMember]
-        //public int TargetMonitor
-        //{
-        //    get { return _fieldTargetMonitor; }
-        //    set
-        //    {
-        //        if (_fieldTargetMonitor != value)
-        //        {
-        //            _fieldTargetMonitor = value;
-        //            RaisePropertyChanged(nameof(TargetMonitor));
-        //        }
-        //    }
-        //}
 
         private int _fieldActiveSetting;
         /// <summary>
@@ -81,12 +64,12 @@ namespace MultiMonitorTools.Settings
             }
         }
 
+        /// <summary>
+        /// 現在アクティブな設定
+        /// </summary>
         public ObservableCollection<WallpaperSettings> Current
             => this.Settings[this.ActiveSetting];
-
-        //public WallpaperSettings TargetMonitorSetting
-        //    => this.Settings[this.ActiveSetting][this.TargetMonitor];
-
+        
 
 
 
@@ -96,24 +79,19 @@ namespace MultiMonitorTools.Settings
             this.Settings = new ObservableCollection<ObservableCollection<WallpaperSettings>>();
 
             this.AddNew(monitorCount);
-
-            //var defaultSetting = new ObservableCollection<WallpaperSettings>
-            //    (Enumerable.Range(0, monitorCount).Select(x => new WallpaperSettings()));
-
-            //this.Settings.Add(defaultSetting);
-
-            //this.TargetMonitor = 0;
+            
             this.RotateDevice = 0;
             this.ActiveSetting = 0;
-
-
-
         }
 
         public MonitorSettings() : this(0)
         {
         }
 
+        /// <summary>
+        /// 新しい設定を追加
+        /// </summary>
+        /// <param name="monitorCount"></param>
         public void AddNew(int monitorCount)
         {
 
@@ -123,6 +101,10 @@ namespace MultiMonitorTools.Settings
             this.Settings.Add(defaultSetting);
         }
 
+        /// <summary>
+        /// 全設定のディスプレイ総数を増やす
+        /// </summary>
+        /// <param name="length"></param>
         public void ExpandMonitorCount(int length)
         {
             foreach (var item in this.Settings)
@@ -134,9 +116,12 @@ namespace MultiMonitorTools.Settings
             }
         }
 
+        /// <summary>
+        /// Deep Copy
+        /// </summary>
+        /// <returns></returns>
         public MonitorSettings Clone()
         {
-
             var clone = new MonitorSettings(0);
             clone.Settings.Clear();
 
@@ -148,10 +133,8 @@ namespace MultiMonitorTools.Settings
 
             clone.ActiveSetting = this.ActiveSetting;
             clone.RotateDevice = this.RotateDevice;
-            //clone.TargetMonitor = this.TargetMonitor;
 
             return clone;
-
         }
         
 

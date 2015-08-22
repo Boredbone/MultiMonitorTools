@@ -10,7 +10,9 @@ using MultiMonitorTools.Settings;
 
 namespace MultiMonitorTools
 {
-    
+    /// <summary>
+    /// ユーザー設定を管理
+    /// </summary>
     class UserSettings
     {
         private string configFileName = "settings.config";
@@ -28,13 +30,18 @@ namespace MultiMonitorTools
             this.SettingXml = new XmlSettingManager<MonitorSettings>(this.configFileName);
         }
 
-
+        /// <summary>
+        /// 設定をファイルに保存
+        /// </summary>
         public void Save()
         {
             this.SettingXml.SaveXml(this.MonitorSettings);
         }
         
-
+        /// <summary>
+        /// 設定をファイルから読み込み
+        /// </summary>
+        /// <param name="monitorCount">ディスプレイ総数</param>
         public void Load(int monitorCount)
         {
             var result = this.SettingXml.LoadXml();

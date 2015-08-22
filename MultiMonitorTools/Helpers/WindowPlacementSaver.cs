@@ -11,6 +11,9 @@ using Boredbone.Utility;
 
 namespace MultiMonitorTools.Helpers
 {
+    /// <summary>
+    /// Windowの位置とサイズをファイルに保存
+    /// </summary>
     public class WindowPlacementSaver
     {
 
@@ -33,19 +36,27 @@ namespace MultiMonitorTools.Helpers
             this.Load();
         }
         
-
+        /// <summary>
+        /// 設定ファイルを保存
+        /// </summary>
         public void Save()
         {
-            //await Task.Delay(100);
             this.PlacementXml.SaveXml(this.WindowPlacements);
         }
 
+        /// <summary>
+        /// 設定ファイルを読み込み
+        /// </summary>
         public void Load()
         {
             this.WindowPlacements = this.PlacementXml.LoadXml().Value;
         }
 
-
+        /// <summary>
+        /// 位置とサイズを復元
+        /// </summary>
+        /// <param name="window"></param>
+        /// <param name="key"></param>
         public void Restore(Window window, string key)
         {
             Rectangle placement;
@@ -55,6 +66,11 @@ namespace MultiMonitorTools.Helpers
             }
         }
 
+        /// <summary>
+        /// サイズを変更せず、位置のみを復元
+        /// </summary>
+        /// <param name="window"></param>
+        /// <param name="key"></param>
         public void RestorePosition(Window window, string key)
         {
             Rectangle placement;
@@ -64,6 +80,11 @@ namespace MultiMonitorTools.Helpers
             }
         }
 
+        /// <summary>
+        /// 位置とサイズを保存
+        /// </summary>
+        /// <param name="window"></param>
+        /// <param name="key"></param>
         public void Store(Window window, string key)
         {
             var placement = new WindowInformation(new WindowInteropHelper(window).Handle).GetPlacement();

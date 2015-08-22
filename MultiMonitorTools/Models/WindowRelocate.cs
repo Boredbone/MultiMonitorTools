@@ -10,7 +10,9 @@ using System.Drawing;
 
 namespace MultiMonitorTools
 {
-
+    /// <summary>
+    /// ウインドウの情報
+    /// </summary>
     public class WindowInformation
     {
         public string Title { get; set; }
@@ -33,6 +35,9 @@ namespace MultiMonitorTools
         }
     }
 
+    /// <summary>
+    /// WindowPlacementのラッパー
+    /// </summary>
     public static class WindowRelocate
     {
 
@@ -89,17 +94,7 @@ namespace MultiMonitorTools
         /// <param name="positon"></param>
         public static void Relocate(this WindowInformation window, Rectangle positon)
         {
-
-            /*
-            // メイン・ウィンドウが最小化されていれば元に戻す
-            if (IsIconic(hWnd))
-            {
-                ShowWindowAsync(hWnd, (int)ShowWindowCommands.Restore);
-            }
-            // メイン・ウィンドウを最前面に表示する
-            SetActiveWindow(hWnd);
-            SetForegroundWindow(hWnd);*/
-
+            
             var placement = new WindowPlacement.WINDOWPLACEMENT();
 
             placement.Length = Marshal.SizeOf(typeof(WindowPlacement.WINDOWPLACEMENT));
@@ -128,6 +123,7 @@ namespace MultiMonitorTools
 
             placement.Flags = 0;
 
+            //最小化されていたら元に戻す
             placement.ShowCmd =
                 (placement.ShowCmd == WindowPlacement.ShowWindowCommands.ShowMinimized)
                 ? WindowPlacement.ShowWindowCommands.Normal
@@ -136,6 +132,7 @@ namespace MultiMonitorTools
 
             WindowPlacement.SetWindowPlacement(window.Handle, ref placement);
             
+            //最前面に表示
             WindowPlacement.SetForegroundWindow(window.Handle);
         }
 

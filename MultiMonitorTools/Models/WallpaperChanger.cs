@@ -77,32 +77,7 @@ namespace MultiMonitorTools.Models
             }
 
             progress.OnCompleted();
-
-            /*
-            await Task.Run(async () =>
-            {
-
-                //回転中は画面がちらつくので暗転させる
-                using (increment != 0 ? new DisplayBlackOut(blackoutTime) : Disposable.Empty)
-                {
-                    //画面を回転
-                    rotate.Rotate(increment);
-
-                    //壁紙を設定
-                    this.RefreshWallpaper(settings);
-                }
-
-                progress.OnNext(1);
-
-                if (increment != 0)
-                {
-                    //壁紙が正しく変更されないことがあるので、時間がたったら再度壁紙を設定
-                    await Task.Delay(3000);
-                    this.RefreshWallpaper(settings);
-                }
-
-                progress.OnCompleted();
-            });*/
+            
         }
 
         /// <summary>

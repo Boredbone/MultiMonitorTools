@@ -62,6 +62,10 @@ namespace MultiMonitorTools.Settings
 
         }
 
+        /// <summary>
+        /// Deep Copy
+        /// </summary>
+        /// <returns></returns>
         public WallpaperInformation Clone()
         {
             return new WallpaperInformation(this.Path)

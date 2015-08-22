@@ -14,7 +14,6 @@
         BorderBrush="{DynamicResource {x:Static SystemColors.WindowFrameBrushKey}}"
         Closing="RestorableWindow_Closing" MouseLeftButtonDown="Window_MouseLeftButtonDown"
         Loaded="Window_Loaded" ResizeMode="CanMinimize" Icon="/MultiMonitorTools;component/icon.ico">
-    <!-- ResizeMode="NoResize"-->
     <Window.DataContext>
         <viewmodel:MainWindowViewModel/>
     </Window.DataContext>

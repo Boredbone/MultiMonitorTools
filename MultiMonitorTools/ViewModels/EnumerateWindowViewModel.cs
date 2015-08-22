@@ -14,6 +14,9 @@ namespace MultiMonitorTools.ViewModels
     {
 
         private ObservableCollection<WindowInformation> _fieldWindows;
+        /// <summary>
+        /// 検出されたすべてのウインドウの一覧
+        /// </summary>
         public ObservableCollection<WindowInformation> Windows
         {
             get { return _fieldWindows; }
@@ -29,15 +32,12 @@ namespace MultiMonitorTools.ViewModels
 
         public ReactiveCommand RefreshCommand { get; }
 
-
-        //public ObservableCollection<WindowInformation> Windows { get; private set; }
-
-        
         public WindowInformation SelectedWindow { get; set; }
 
 
         public EnumerateWindowViewModel()
         {
+            //全ウインドウを列挙
             this.Windows = new ObservableCollection<WindowInformation>(WindowRelocate.EnumerateWindows());
 
             this.RefreshCommand = new ReactiveCommand().AddTo(this.unsubscribers);
@@ -48,9 +48,5 @@ namespace MultiMonitorTools.ViewModels
         }
 
         
-        //public void Execute()
-        //{
-        //    this.SelectedWindow?.Replace(0, 0);
-        //}
     }
 }

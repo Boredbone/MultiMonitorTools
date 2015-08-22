@@ -8,11 +8,14 @@ using System.Threading.Tasks;
 namespace MultiMonitorTools.Settings
 {
     /// <summary>
-    /// ディスプレイの方向と対応した背景画像の辞書
+    /// ディスプレイの方向と対応した壁紙画像の辞書
     /// </summary>
     [DataContract]
     public class WallpaperSettings
     {
+        /// <summary>
+        /// 各方向に対応した壁紙画像と表示方法
+        /// </summary>
         [DataMember]
         public Dictionary<DisplayOrientations, WallpaperInformation> OrientationSettings { get; private set; }
 

@@ -4,6 +4,9 @@ using MultiMonitorTools.Native;
 
 namespace MultiMonitorTools
 {
+    /// <summary>
+    /// DISPLAY_DEVICEとDEVMODEのラッパー
+    /// </summary>
     public class DeviceMode
     {
         public DEVMODE Mode { get; private set; }
@@ -13,20 +16,18 @@ namespace MultiMonitorTools
         public DeviceMode(int id)
         {
             this.IsSucceeded = this.GenerateNewMode(id);
-            
-
         }
 
 
         private bool GenerateNewMode(int id)
         {
             var MyInfoEnumProc = new DISPLAY_DEVICE();
-            MyInfoEnumProc.cb = Marshal.SizeOf(MyInfoEnumProc);//構造体のサイズを設定(必須)
+            MyInfoEnumProc.cb = Marshal.SizeOf(MyInfoEnumProc);//構造体のサイズを設定
 
 
             if (!DisplayDevice.EnumDisplayDevices(IntPtr.Zero, id, ref MyInfoEnumProc, 0))
             {
-                return false;//-1;
+                return false;
             }
 
             // initialize the DEVMODE structure
@@ -41,7 +42,7 @@ namespace MultiMonitorTools
             if (!DisplayDevice.EnumDisplaySettings
                 (MyInfoEnumProc.DeviceName, DisplayDevice.ENUM_CURRENT_SETTINGS, ref dm))
             {
-                return false;//-1;
+                return false;
             }
 
             this.Mode = dm;

@@ -36,6 +36,7 @@ namespace MultiMonitorTools.ViewModels
                 int number;
                 if(int.TryParse(text,out number))
                 {
+                    //パラメータに従って画面を回転し壁紙を変更
                     await AppData.Current.RotateAndChangeWallPaperAsync(number, Observer.Create<int>(y => this.DisplayRotatingSubject.OnNext(y)));
                 }
                 

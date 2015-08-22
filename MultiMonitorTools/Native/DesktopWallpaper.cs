@@ -4,22 +4,16 @@ using System.Runtime.InteropServices;
 
 namespace MultiMonitorTools.Native
 {
-    /*
-    [StructLayout(LayoutKind.Sequential)]
-    public struct Rect
-    {
-        public int Left;
-        public int Top;
-        public int Right;
-        public int Bottom;
-    }*/
 
     /// <summary>
     /// This enumeration is used to set and get slideshow options.
     /// </summary> 
     public enum DesktopSlideshowOptions
     {
-        ShuffleImages = 0x01,     // When set, indicates that the order in which images in the slideshow are displayed can be randomized.
+        /// <summary>
+        /// When set, indicates that the order in which images in the slideshow are displayed can be randomized.
+        /// </summary>
+        ShuffleImages = 0x01,
     }
 
 

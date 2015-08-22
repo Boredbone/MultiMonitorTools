@@ -68,25 +68,7 @@ namespace MultiMonitorTools.Views
 
             }).AddTo(this.unsubscribers);
         }
-
-        /*
-        protected override void OnSourceInitialized(EventArgs e)
-        {
-            base.OnSourceInitialized(e);
-            WindowPlacementSaver.Instance.RestorePosition(this, windowIds[this.WindowIndex]);
-        }
-
-        protected override void OnClosing(CancelEventArgs e)
-        {
-            base.OnClosing(e);
-
-            if (!e.Cancel)
-            {
-                WindowPlacementSaver.Instance.Store(this, windowIds[this.WindowIndex]);
-            }
-        }
-        */
-
+        
 
 
         private void Window_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -183,12 +165,5 @@ namespace MultiMonitorTools.Views
             }
         }
         
-
-        //private async void Button_Click_4(object sender, RoutedEventArgs e)
-        //{
-        //    await AppData.Current.RotateAndChangeWallPaperAsync(0, Observer.Create<int>(y => { }));
-        //    SystemCommands.MinimizeWindow(this);
-        //}
-
     }
 }

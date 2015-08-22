@@ -16,8 +16,14 @@ using System.ComponentModel;
 
 namespace MultiMonitorTools.Helpers
 {
+    /// <summary>
+    /// 終了時に位置と大きさを保存し、次回起動時に復元するWindow
+    /// </summary>
     public abstract class RestorableWindow : Window
     {
+        /// <summary>
+        /// 各Windowに固有のキー
+        /// </summary>
         public abstract string WindowId { get; }
 
 

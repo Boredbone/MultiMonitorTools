@@ -7,6 +7,9 @@ using System.Windows.Forms;
 
 namespace MultiMonitorTools
 {
+    /// <summary>
+    /// 画面を暗転させる
+    /// </summary>
     class DisplayBlackOut : IDisposable
     {
         public const int AW_HIDE = 0x10000;
@@ -59,64 +62,6 @@ namespace MultiMonitorTools
                 })
                 .ToList();
 
-
-
-
-
-            //forms.Clear();
-
-
-            //var screens = Screen.AllScreens;
-
-            //foreach (var screen in screens)
-            //{
-            //    /*
-            //    var left = Screen.AllScreens.Min(e => e.Bounds.Left);
-            //    var top = Screen.AllScreens.Min(e => e.Bounds.Top);
-
-            //    var right = Screen.AllScreens.Max(e => e.Bounds.Right);
-            //    var bottom = Screen.AllScreens.Max(e => e.Bounds.Bottom);
-
-            //    MessageBox.Show(left.ToString() + "," + top.ToString()
-            //        + "," + right.ToString() + "," + bottom.ToString());
-            //    */
-            //    var length = screen.Bounds.Width > screen.Bounds.Height
-            //        ? screen.Bounds.Width
-            //        : screen.Bounds.Height;
-
-
-            //    var form = new Form()
-            //    {
-            //        BackColor = Color.Black,
-            //        ShowInTaskbar = false,
-            //        TopMost = true,
-            //        //WindowState = FormWindowState.Maximized,
-
-            //        Left = screen.Bounds.Left,
-            //        Top = screen.Bounds.Top,
-            //        Width = length,
-            //        Height = length,
-
-            //        FormBorderStyle = FormBorderStyle.None,
-
-            //    };
-
-            //    /*
-            //    SystemEvents.DisplaySettingsChanged += new EventHandler((o, e) =>
-            //    {
-            //        var bounds = System.Windows.Forms.Screen.GetBounds(form);
-
-            //        form.Left = bounds.Left;
-            //        form.Top = bounds.Top;
-            //        //form.Width = bounds.Width;
-            //        //form.Height = bounds.Height;
-
-            //    });*/
-            //    //form.Show();
-            //    forms.Add(form);
-            //    //form.Left = screen.Bounds.Left;
-
-            //}
             
 
             foreach (var form in forms)
