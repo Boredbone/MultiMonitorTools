@@ -21,7 +21,7 @@ namespace MultiMonitorTools
 
         public MonitorSettings MonitorSettings { get; set; }
 
-        public int settingNum = 3;
+        public int settingNum = 5;
 
 
         public UserSettings()
